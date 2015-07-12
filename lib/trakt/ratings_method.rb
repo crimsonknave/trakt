@@ -1,5 +1,9 @@
 module Trakt
   module RatingsMethod
+    def self.included(mod)
+      mod.add_method :ratings
+    end
+
     def ratings(cached = true)
       return @ratings if @ratings && cached
       client = Trakt::Client.new

@@ -17,6 +17,8 @@ module Trakt
   require 'trakt/ratings_method'
   require 'trakt/watching_method'
   require 'trakt/full_method'
+  require 'trakt/popular_method'
+  require 'trakt/trending_method'
 
   require 'trakt/movie'
   require 'trakt/show'

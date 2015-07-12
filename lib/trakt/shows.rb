@@ -1,15 +1,9 @@
 module Trakt
   class Shows < Cot::Collection
     BASE_URL = '/shows'
+    collected_class Show
 
-    def self.popular(limit: 10, page: 1)
-      collected_class Show
-      client = Trakt::Client.new
-      resp = client.get "#{BASE_URL}/popular", limit: limit, page: page
-
-      fail BadResponse, "Got status #{resp.status}, expected 200" unless resp.status == 200
-      self.new resp.body
-    end
+    extend PopularMethod
 
     def self.trending(limit: 10, page: 1)
       collected_class TrendingShow

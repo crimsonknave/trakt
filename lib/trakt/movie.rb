@@ -1,5 +1,15 @@
 module Trakt
   class Movie < Cot::Frame
+    class << self
+      def add_method(name)
+        @added_methods ||= []
+        @added_methods << name
+      end
+
+      def added_methods
+        @added_methods || []
+      end
+    end
     property :title
     property :year
     property :ids do

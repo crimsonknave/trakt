@@ -1,5 +1,9 @@
 module Trakt
   module StatsMethod
+    def self.included(mod)
+      mod.add_method :stats
+    end
+
     def stats(cached = true)
       return @stats if @stats && cached
       client = Trakt::Client.new

@@ -1,5 +1,9 @@
 module Trakt
   module RelatedMethod
+    def self.included(mod)
+      mod.add_method :related
+    end
+
     def related
       client = Trakt::Client.new
       resp = client.get "#{self.class::BASE_URL}/#{ids.trakt}/related"

@@ -1,5 +1,9 @@
 module Trakt
   module FullMethod
+    def self.included(mod)
+      mod.add_method :full
+    end
+
     def full(cached = true)
       return self if @full && cached
       client = Trakt::Client.new
